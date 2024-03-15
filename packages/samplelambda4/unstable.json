@@ -1,0 +1,50 @@
+{
+  "type": "GraphQLSchema",
+  "query": {
+    "type": "GraphQLObjectType",
+    "name": "Query",
+    "fields": {
+      "products": {
+        "type": "[Product]",
+        "resolve": "..."
+      },
+      "product": {
+        "type": "Product",
+        "args": {
+          "id": { "type": "ID!" }
+        },
+        "resolve": "..."
+      }
+    }
+  },
+  "mutation": {
+    "type": "GraphQLObjectType",
+    "name": "Mutation",
+    "fields": {
+      "createProduct": {
+        "type": "Product",
+        "args": {
+          "input": { "type": "CreateProductInput!" }
+        },
+        "resolve": "..."
+      }
+    }
+  },
+  "types": [
+    {
+      "name": "Product",
+      "fields": [
+        { "name": "id", "type": "ID!" },
+        { "name": "name", "type": "String!" },
+        { "name": "price", "type": "Float!" }
+      ]
+    },
+    {
+      "name": "CreateProductInput",
+      "fields": [
+        { "name": "name", "type": "String!" },
+        { "name": "price", "type": "Float!" }
+      ]
+    }
+  ]
+}

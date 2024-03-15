@@ -1,0 +1,19 @@
+name: Deploy Package
+description: Deploy required package
+inputs:
+  lambda-function:
+    description: 'The name of the Lambda function to build and deploy on evnironment'
+    required: true
+  environment-name:
+    description: 'Environment to check for changes deployment'
+    required: true
+    default: test
+
+runs:
+  using: 'composite'
+  steps:
+    - id: deploy-env-packages
+      run: |
+        pnpm --filter ${{inputs.lambda-function}} run build --stage ${{inputs.environment-name}}
+        pnpm --filter ${{inputs.lambda-function}} run deploy --stage ${{inputs.environment-name}}
+      shell: bash

@@ -1,0 +1,33 @@
+{
+  "name": "dropschedulerfrontend",
+  "version": "1.0.0",
+  "description": "The dropschedulerfrontend lambda for testing",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec ts-node src/index.ts",
+    "test": "DOTENV_CONFIG_PATH=.env.test jest --setupFiles=dotenv/config",
+    "configure-credentials": "serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY",
+    "build": "npm install && tsc && serverless package",
+    "deploy": "serverless deploy",
+    "destroy": "serverless destroy"
+  },
+  "keywords": [],
+  "author": "mupatil@galaxe.com",
+  "license": "ISC",
+  "dependencies": {
+    "@serverless/typescript": "^3.38.0",
+    "serverless": "^3.38.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.2.3",
+    "@types/node": "^18.19.22",
+    "dotenv": "^16.0.3",
+    "jest": "^29.3.1",
+    "serverless-deployment-bucket": "^1.6.0",
+    "serverless-esbuild": "^1.51.0",
+    "serverless-offline": "^13.3.3",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.3"
+  }
+}

@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Create Lambda function from S3 Zip
+
+Parameters:
+  LambdaFunctionName:
+    Type: String
+    Default: samplelambda4 # Default value, can be overridden during stack creation
+
+Resources:
+  MyLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: index.handler
+      # Codeuri: lib/lambda/lambda-handlers/samplelambda/tsc.out/src # For local sam deployment
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        S3Bucket: poc-github-action-lambda-deploy
+        S3Key: !Sub "poc-github-action-lambda-deploy/${LambdaFunctionName}.zip"
+        # S3Key: poc-github-action-lambda-deploy.zip # S3Bucket Zip filekey
+      Runtime: nodejs18.x  
+      Timeout: 30
+      MemorySize: 256
+      FunctionName: !Ref LambdaFunctionName
+
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: LambdaExecutionPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: arn:aws:logs:*:*:*
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                Resource: arn:aws:s3:::poc-github-action-lambda-deploy/* # Replace with your actual bucket ARN

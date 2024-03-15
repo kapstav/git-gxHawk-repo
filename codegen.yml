@@ -1,0 +1,29 @@
+overwrite: true
+schema: 'packages/samplelambda4/unstable.json'
+generates:
+  packages/samplelambda4/src/shopifyUnstable.ts:
+    documents: ['packages/samplelambda4/shopifyUnstableGQLApollo.ts']
+    config:
+      noSchemaStitching: true
+      avoidOptionals:
+        field: true
+        inputValue: false
+        object: false
+        defaultValue: false
+      experimentalFragmentVariables: true
+      flattenGeneratedTypes: true
+      preResolveTypes: true
+      skipTypeNameForRoot: true
+      addUnderscoreToArgsType: true
+      declarationKind: 'interface'
+      maybeValue: T
+      namingConvention:
+        typeNames: change-case-all#pascalCase
+        enumValues: change-case-all#upperCase
+
+    plugins:
+      - add:
+          content: '/* eslint-disable */'
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-compatibility'
