@@ -2,7 +2,7 @@ name: CI (Push)
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -11,76 +11,75 @@ jobs:
     strategy:
       matrix:
         lambda-function: # Whenever new lambda package added in lib/lambda/handler, update the same here...
-        - dashboard
-        - acknowledgements
-      #  - masterdataingest
-        - orderexport
-        - orderpdf 
-        - tagging
-        - productpackages
-        - exports
-        - disputepackage
-        - reportingpackage
-        - maintenancejobspackages 
-        - storecredit
-        - pushnotifications
-        - ordersget
-        - geolocator
-        - apis
-        - audit
-        - bulkaction
-        - dropscheduler
-        - eventbridge 
-        - ordersprocessopen
-        - orderssend
-        - orderscapture
-        - cancellations
-        - fulfillments
-        - refundapi
-        - ftp
-        - monitoring
-        - checkoutone
-        - productinventory
-        - releaseupload
-        - resourcess
-        - zendesk
-      #  - dashboardsfrontend
-      #  - config
-      #  - dropschedulerfrontend
-      #  - e2e
-      #  - github
-        - masterdata
-      #  - scripts
-      #  - siberialibs
-      #  - support
+          # - dashboard
+          - acknowledgements
+      # #  - masterdataingest
+      #   - orderexport
+      #   - orderpdf
+      #   - tagging
+      #   - productpackages
+      #   - exports
+      #   - disputepackage
+      #   - reportingpackage
+      #   - maintenancejobspackages
+      #   - storecredit
+      #   - pushnotifications
+      #   - ordersget
+      #   - geolocator
+      #   - apis
+      #   - audit
+      #   - bulkaction
+      #   - dropscheduler
+      #   - eventbridge
+      #   - ordersprocessopen
+      #   - orderssend
+      #   - orderscapture
+      #   - cancellations
+      #   - fulfillments
+      #   - refundapi
+      #   - ftp
+      #   - monitoring
+      #   - checkoutone
+      #   - productinventory
+      #   - releaseupload
+      #   - resourcess
+      #   - zendesk
+      # #  - dashboardsfrontend
+      # #  - config
+      # #  - dropschedulerfrontend
+      # #  - e2e
+      # #  - github
+      #   - masterdata
+      # #  - scripts
+      # #  - siberialibs
+      # #  - support
 
     steps:
-    - uses: actions/checkout@v2 
+      - uses: actions/checkout@v2
 
-    # Setup the node js environment on runner instance
-    - name: Set up Node.js environment
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18'
+      # Setup the node js environment on runner instance
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
 
-    # Install required project dependencies on runner for smooth deployment
-    - name: Install dependencies
-      id: install-dependencies
-      uses: ./.github/install-dependencies
+      # Install required project dependencies on runner for smooth deployment
+      - name: Install dependencies
+        id: install-dependencies
+        uses: ./.github/install-dependencies
 
-    # Configure the aws-cli on runner instance
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
+      # Configure the aws-cli on runner instance
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
 
-    # Build and deploy the lambda functions packages
-    - name: Build and deploy lambda
-      id: build-and-deploy-lambda
-      uses: ./.github/deploy-packages
-      with:
-        lambda-function: ${{ matrix.lambda-function }}
-        environment-name : stage
-     
+      # Build and deploy the lambda functions packages
+      - name: Build and deploy lambda
+        id: build-and-deploy-lambda
+        uses: ./.github/deploy-packages
+        with:
+          lambda-function: ${{ matrix.lambda-function }}
+          environment-name: stage
