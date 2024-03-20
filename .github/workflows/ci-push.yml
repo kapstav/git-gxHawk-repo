@@ -12,9 +12,9 @@ jobs:
       matrix:
         lambda-function: # Whenever new lambda package added in lib/lambda/handler, update the same here...
           # - dashboard
-          - acknowledgements
+          # - acknowledgements
       # #  - masterdataingest
-      #   - orderexport
+          - orderexport
       #   - orderpdf
       #   - tagging
       #   - productpackages
@@ -35,7 +35,7 @@ jobs:
       #   - orderssend
       #   - orderscapture
       #   - cancellations
-      #   - fulfillments
+          - fulfillments
       #   - refundapi
       #   - ftp
       #   - monitoring
