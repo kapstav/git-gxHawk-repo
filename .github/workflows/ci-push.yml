@@ -53,7 +53,7 @@ jobs:
       #   - masterdata
       # #  - scripts
       # #  - siberialibs
-      # #  - support
+      #  - support
 
     steps:
       - uses: actions/checkout@v2
