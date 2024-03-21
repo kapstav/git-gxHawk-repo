@@ -2,7 +2,7 @@ name: CI (Push)
 
 on:
   push:
-    branches: [main]
+    branches: [ks_eventbridge]
 
 jobs:
   build:
