@@ -5,7 +5,7 @@ export async function handler(event: any) {
 
     // Example DynamoDB operation
     const params: DynamoDB.DocumentClient.PutItemInput = {
-        TableName: 'ShopifyOrderData' ,
+        TableName: 'ShopifyOrderData',
         Item: {
             key: '300'
         }
