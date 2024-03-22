@@ -11,10 +11,6 @@ runs:
       with:
         node-version: 16
 
-    - name: Install aws-sdk
-      run: pnpm install aws-sdk
-      shell: bash
-
-    - name: Install dependencies
+    - name: Install dependencies for .
       run: pnpm install
       shell: bash
