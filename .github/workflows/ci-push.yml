@@ -69,7 +69,7 @@ jobs:
         id: install-dependencies
         uses: ./.github/install-dependencies
 
-      # Configure the aws-cli on runner instance
+      # Configure the aws-cli on runner instance..
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
