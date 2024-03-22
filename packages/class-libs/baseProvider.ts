@@ -12,7 +12,7 @@ export function baseProvider(): AWS["provider"] {
       name: "com.gxhawk.${self:provider.region}.${self:provider.stage}.deployments.123",
     },
     tags: {
-      //   name: "${self:service}-${self:provider.stage} ",
+      //   name: "${self:service}-${self:provider.stage} " ,
       platform: "gxhawk",
       //   environment: "${self:provider.stage}",
     },
