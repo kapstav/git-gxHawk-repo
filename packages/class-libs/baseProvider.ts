@@ -14,7 +14,7 @@ export function baseProvider(): AWS["provider"] {
     tags: {
       //   name: "${self:service}-${self:provider.stage} ",
       platform: "gxhawk",
-      //   environment: "${self:provider.stage}" ,
+      //   environment: "${self:provider.stage}",
     },
     logs: {
       httpApi: true,
