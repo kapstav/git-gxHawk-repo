@@ -38,6 +38,9 @@ dependencies:
   '@serverless/typescript':
     specifier: ^3.38.0
     version: 3.38.0
+  '@types/aws-sdk':
+    specifier: ^2.7.0
+    version: 2.7.0
   pnpm:
     specifier: ^8.15.4
     version: 8.15.4
