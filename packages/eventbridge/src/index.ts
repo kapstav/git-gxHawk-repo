@@ -1,11 +1,11 @@
-import { DynamoDB } from '@aws-sdk/*';
+import { DynamoDB } from 'aws-sdk';
 
 //
-export async function handler(event: any) {
+export async function handler(event: any) {   
     const dynamoDB = new DynamoDB.DocumentClient();  
 
         const now = new Date();
-        // Format date and time to YYYYMMDDHHMISS format
+        // Format date and time to YYYYMMDDHHMISS format.
         const formattedTimestamp = now.toISOString().replace(/[-T:]/g, '').slice(0, 14);
         const numericTimestamp = parseInt(formattedTimestamp, 10);
     // Example DynamoDB operation
