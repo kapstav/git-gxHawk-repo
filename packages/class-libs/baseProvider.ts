@@ -9,7 +9,7 @@ export function baseProvider(): AWS["provider"] {
     region: "${opt:region, 'us-east-1'}" as AWS["provider"]["region"],
     versionFunctions: false,
     deploymentBucket: {
-      name: "com.gxhawk.${self:provider.region}.${self:provider.stage}.deployments",
+      name: "com.gxhawk.${self:provider.region}.${self:provider.stage}.deployments.123",
     },
     tags: {
       //   name: "${self:service}-${self:provider.stage}",
