@@ -13,6 +13,7 @@ runs:
 
     - name: Install aws-sdk
       run: pnpm install aws-sdk
+      shell: bash
 
     - name: Install dependencies
       run: pnpm install
