@@ -50,7 +50,7 @@ jobs:
       # #  - dropschedulerfrontend
       # #  - e2e
       # #  - github
-      #    - masterdata
+      # #  - masterdata
       # #  - scripts
       # #  - siberialibs
       #    - support
