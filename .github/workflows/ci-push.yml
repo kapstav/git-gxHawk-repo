@@ -77,7 +77,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      # Build and deploy the lambda functions packages
+      # Build and deploy the lambda functions packages..
       - name: Build and deploy lambda
         id: build-and-deploy-lambda
         uses: ./.github/deploy-packages
