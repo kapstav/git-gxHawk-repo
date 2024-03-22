@@ -1,6 +1,6 @@
 import { DynamoDB } from 'aws-sdk';
 
-
+//
 export async function handler(event: any) {
     const dynamoDB = new DynamoDB.DocumentClient();  
 
