@@ -11,6 +11,6 @@ runs:
       with:
         node-version: 16
 
-    - name: Install dependencies for .
+    - name: Install dependencies
       run: pnpm install --no-frozen-lockfile
       shell: bash
